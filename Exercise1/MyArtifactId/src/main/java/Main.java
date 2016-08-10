@@ -2,13 +2,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+
 public class Main {
         public static void main(String[] args) throws IOException {
         	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
        	int choice = 3;
         boolean exit = false;
         String path;
-        
+        Encryptor Myencryptor  = new Encryptor();
         while (exit != true)
         	{
         	System.out.println("1 - for encryption");
@@ -20,7 +21,9 @@ public class Main {
 		       	{
 		        	case 1:
 		        	{
-		        		
+		        		System.out.println("insert the path of the file for encryption");
+		                 path = reader.readLine();
+		                 Myencryptor.encrypt(path);
 		        		//Todo encrypt
 		        		break;
 		        	}
@@ -28,7 +31,9 @@ public class Main {
 		        	{
 		        		System.out.println("insert the path of the file for decryption");
 		                 path = reader.readLine();
-		              
+		                 System.out.println("insert the key of for the decryption");
+		                 int key = Integer.parseInt(reader.readLine());
+		                 Myencryptor.decrypt(path,key);
 		        		//Todo decrypt
 		        		break;
 		        	}

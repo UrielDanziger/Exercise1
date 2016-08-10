@@ -51,7 +51,7 @@ public class Encryptor {
 	        }
 		return key;
 	}
-	public void decrypt(String path, int key) throws IOException {
+	public void decrypt(String path, int key) {
 		FileInputStream fileInput = null;
 		FileOutputStream fileOutput = null;
 		Random rand = new Random();
