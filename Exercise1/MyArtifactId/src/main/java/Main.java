@@ -20,9 +20,7 @@ public class Main {
 		       	{
 		        	case 1:
 		        	{
-		        		System.out.println("insert the path of the file for enryption");
-		                path = reader.readLine();
-		                PrintWriter writer = new PrintWriter(path+".txt", "UTF-8");
+		        		
 		        		//Todo encrypt
 		        		break;
 		        	}
@@ -30,7 +28,7 @@ public class Main {
 		        	{
 		        		System.out.println("insert the path of the file for decryption");
 		                 path = reader.readLine();
-		                 PrintWriter writer = new PrintWriter(path+".txt", "UTF-8");
+		              
 		        		//Todo decrypt
 		        		break;
 		        	}
