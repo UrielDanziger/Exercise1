@@ -11,9 +11,10 @@ import org.omg.CORBA.INTERNAL;
 
 
 public class Encryptor { 
+	public CaesarAlgorithm algorthim;
 	
 	public int encrypt(String path) throws IOException {
-		
+		algorthim  = new CaesarAlgorithm();
 		FileInputStream fileInput = null;
 		FileOutputStream fileOutput = null;
 		Random rand = new Random();
@@ -26,14 +27,7 @@ public class Encryptor {
 	                int data;
 
 	                while ((data = fileInput.read()) != -1) {
-	                	if(data + key > Integer.MAX_VALUE)
-	                	{	
-	                		fileOutput.write( (Integer.MAX_VALUE -data) + key);
-	                	}
-	                	else 
-	                	{
-	                		fileOutput.write(data+key);
-	                	}
+	                	fileOutput.write(algorthim.encrypt(data, key));
 	                }
 	            }
 	        catch (IOException e)
@@ -51,7 +45,8 @@ public class Encryptor {
 	        }
 		return key;
 	}
-	public void decrypt(String path, int key) {
+	public void decrypt(String path, int key) throws IOException {
+		algorthim  = new CaesarAlgorithm();
 		FileInputStream fileInput = null;
 		FileOutputStream fileOutput = null;
 		Random rand = new Random();
@@ -63,14 +58,7 @@ public class Encryptor {
 	                int data;
 
 	                while ((data = fileInput.read()) != -1) {
-	                	if(data - key < Integer.MIN_VALUE)
-	                	{	
-	                		fileOutput.write(Integer.MAX_VALUE - (key -data) );
-	                	}
-	                	else 
-	                	{
-	                		fileOutput.write(data-key);
-	                	}
+	                		fileOutput.write(algorthim.decrypt(data, key));
 	                }
 	            }
 	        catch (IOException e)
