@@ -10,8 +10,8 @@ public class TestEncrypt {
 	@Test
 	public void test() throws IOException {
 		Encryptor TestingObject = new Encryptor();
-		TestingObject.encrypt("D:\\Downloads\\document.text");
-		TestingObject.decrypt("D:\\Downloads\\document.text.encrpyted");
+		int a = TestingObject.encrypt("D:\\Downloads\\document.txt");
+		TestingObject.decrypt("D:\\Downloads\\document.txt.encrpyted",a);
 	}
 
 }

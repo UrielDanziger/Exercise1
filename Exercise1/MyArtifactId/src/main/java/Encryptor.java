@@ -51,6 +51,40 @@ public class Encryptor {
 	        }
 		return key;
 	}
-	public void decrypt(String path) {
+	public void decrypt(String path, int key) throws IOException {
+		FileInputStream fileInput = null;
+		FileOutputStream fileOutput = null;
+		Random rand = new Random();
+		try  {
+	        		fileInput = new FileInputStream(path);
+	                fileOutput = new FileOutputStream(path+".decrypted");
+	        			            
+	                   
+	                int data;
+
+	                while ((data = fileInput.read()) != -1) {
+	                	if(data - key < Integer.MIN_VALUE)
+	                	{	
+	                		fileOutput.write(Integer.MAX_VALUE - (key -data) );
+	                	}
+	                	else 
+	                	{
+	                		fileOutput.write(data-key);
+	                	}
+	                }
+	            }
+	        catch (IOException e)
+	            {
+	                System.out.println("Error message: " + e.getMessage());
+	            }
+	         
+	        finally {
+	        		if (fileInput != null) {
+	        			fileInput.close();
+	            }
+	            if (fileOutput != null) {
+	            	fileOutput.close();
+	            }
+	        }
 	}
 };
